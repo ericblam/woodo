@@ -17,4 +17,4 @@ Options include:
 * --small
 
 Credits:
-czaquer at http://as.reddit.com/r/pokemon/comments/18gpja/so_i_was_messing_around_with_the_terminal/ on reddit, which links to the plaintext at http://pastebin.com/M4MgiruT
+[czaquer](http://as.reddit.com/r/pokemon/comments/18gpja/so_i_was_messing_around_with_the_terminal/) on reddit and his plaintext [here](http://pastebin.com/M4MgiruT)
