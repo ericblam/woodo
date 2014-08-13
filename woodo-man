@@ -1,0 +1,38 @@
+.\" Manpage for woodo.
+.\" Contact eric@ericblam.com to correct errors or typos.
+.TH man 6 "13 August 2014" "0.1" "woodo man page"
+.SH NAME
+woodo \- a program that utilizes the true potential of sudo
+.SH SYNOPSIS
+.B woodo
+[--help]
+.br
+.B woodo
+[--color]
+.br
+.B woodo
+[--image]
+.br
+.B woodo
+[--small]
+.br
+.B woodo
+[--long]
+.br
+.SH DESCRIPTION
+Prints out the Pokémon sudowoodo
+.SH OPTIONS
+--help - prints help text
+.br
+--color - like woodo without option, but with colored text
+.br
+--image - prints an image using bash background colors
+.br
+--small - prints small image
+.br
+--long - prints large image
+.br
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Eric Lam (eric@ericblam.com)
