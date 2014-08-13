@@ -3,7 +3,7 @@ woodo: woodo.h woodo.c
 
 install: woodo
 	mv woodo /usr/local/bin
-	cp woodo-man woodo.6
+	cp woodo.1 woodo.6
 	gzip woodo.6
 	mv woodo.6.gz /usr/share/man/man6/
 
