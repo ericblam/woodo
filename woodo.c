@@ -10,6 +10,11 @@
 #define SMALL "--small"
 #define HELP "--help"
 
+#define OPT_COLOR 1
+#define OPT_IMAGE 2
+#define OPT_LONG 3
+#define OPT_SMALL 4
+
 int main(int argc, char* argv[]) {
 
   uid_t uid = getuid();
@@ -20,50 +25,61 @@ int main(int argc, char* argv[]) {
     return 1;
   }
 
-  int i = 0;
-  int color = 0;
-  int image = 0;
-  int _long = 0;
-  int small = 0;
+  int option = get_option(argc, argv);
+
+  print_woodo(option);
+}
+
+int get_option(int argc, char* argv[]) {
+  int option = 0;
+  int i;
   for (i = 0; i < argc; i++) {
     if (!strcmp(COLOR, argv[i])) {
-      color = 1;
+      option = OPT_COLOR;
     }
     else if (!strcmp(IMAGE, argv[i])) {
-      image = 1;
+      option = OPT_IMAGE;
     }
     else if (!strcmp(LONG, argv[i])) {
-      _long = 1;
+      option = OPT_LONG;
     }
     else if (!strcmp(SMALL, argv[i])) {
-      small = 1;
+      option = OPT_SMALL;
     }
-    else if (!strcmp(HELP, argv[i])) {
-      printf("Usage: sudo woodo <option>\n"
-	     "\t\t(no option)\tNormal ASCII sudowoodo\n"
-	     "\t\t--help\t\tView usage\n"
-	     "\t\t--color\t\tPrints ASCII image in color\n"
-	     "\t\t--image\t\tPrints image of background colors, compressed\n"
-	     "\t\t--small\t\tPrints small image, like --image\n"
-	     "\t\t--long\t\tPrints long, stretched image like --image\n");
-      return 0;
+    else if (!strcmp(HELP, argv[i]) || !strcmp("-h", argv[i])) {
+      print_help();
+      exit(0);
     }
   }
+  return option;
+}
 
-  if (image) {
-    printf(SUPER_SUDO_WOODO);
-  }
-  else if (_long) {
-    printf(SUPER_SUDO_WOODO_LONG);
-  }
-  else if (small) {
-    printf(SMALL_WOODO);
-  }
-  else if (color) {
+void print_woodo(int option) {
+  switch (option) {
+  case OPT_COLOR:
     printf(COLOR_WOODO_STRING);
-  }
-  else {
+    break;
+  case OPT_IMAGE:
+    printf(SUPER_SUDO_WOODO);
+    break;
+  case OPT_LONG:
+    printf(SUPER_SUDO_WOODO_LONG);
+    break;
+  case OPT_SMALL:
+    printf(SMALL_WOODO);
+    break;
+  default:
     printf(WOODO_STRING);
+    break;
   }
-  return 0;
+}
+
+void print_help() {
+  printf("Usage: sudo woodo <option>\n"
+	 "\t\t(no option)\tNormal ASCII sudowoodo\n"
+	 "\t\t-h, --help\tView usage\n"
+	 "\t\t--color\t\tPrints ASCII image in color\n"
+	 "\t\t--image\t\tPrints image of background colors, compressed\n"
+	 "\t\t--small\t\tPrints small image, like --image\n"
+	 "\t\t--long\t\tPrints long, stretched image like --image\n");
 }

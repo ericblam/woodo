@@ -1,3 +1,7 @@
+void print_help();
+void print_woodo(int option);
+int get_option(int argc, char* argv[]);
+
 char* WOODO_STRING =
   "                                         @@6@                             \n"
   "                                        @C6CC@                            \n"
